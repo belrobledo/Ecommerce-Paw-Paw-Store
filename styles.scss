@@ -228,4 +228,14 @@ $btn-border-radius:1.35rem;
 }
 //--------------------------------------------------------------------------------------------------------------
 
+.card-ticket{
+    border-radius: 10px;
+    color:#384047e5;
+    background-color: #fefeff;
+}
+
+.card-ticket-img{
+    height: 100px;
+}
+
 @import "./node_modules/bootstrap/scss/bootstrap.scss"

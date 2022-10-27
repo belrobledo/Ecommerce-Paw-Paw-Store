@@ -17,6 +17,10 @@ class Producto{
         this.cantidad = parseInt(cantidad);
     }
 
+    calcularPrecioTotalProducto(){
+      return this.cantidad * this.precio;
+    }
+
     static resetStaticID (){
         Producto.i = 1;
     }
@@ -48,7 +52,7 @@ class Carrito{
     }
 
     calcularCantTotalProductos(){
-      let suma = 0;
+        let suma = 0;
         for(let producto of this.productos){
             suma += producto.cantidad;
         }
@@ -180,11 +184,11 @@ function saveCarrito(){
 }
 
 function emptyCarrito(){
-localStorage.clear();
-carrito = new Carrito();
-for(const producto of listaProductos){
-  producto.cantidad = 1;
-}
+  localStorage.clear();
+  carrito = new Carrito();
+  for(const producto of listaProductos){
+    producto.cantidad = 1;
+  }
 }
 //----------------------------------------------------------------------------------------------------------
 
@@ -263,7 +267,7 @@ function breadCrumb(categoria = "Productos"){
   document.body.appendChild(containerBreadCrumb);
   containerBreadCrumb.id = "containerBreadCrumb";
   containerBreadCrumb.className = "container pt-4 ps-5";
-  if(categoria === "Productos" || categoria === "Checkout"){
+  if(categoria === "Productos" || categoria === "Checkout" || categoria === "Ticket"){
     containerBreadCrumb.innerHTML = `
                                   <ol class="breadcrumb" style="--bs-breadcrumb-divider: '>';">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -311,15 +315,14 @@ function listarProductos(auxLista = []) {
 
 function mostrarCarrito(){
   let containerCarrito = document.getElementById("containerCarrito");
+  document.getElementById("cantCarrito").innerHTML = carrito.calcularCantTotalProductos();
+
   if(carrito.productos.length === 0){
     containerCarrito.innerHTML = `<p class="ms-4">El carrito está vacío.</p>`;
   }
   else{
     containerCarrito.innerHTML = "";
     containerCarrito.className = "container-fluid";
-
-    let cantCarrito = document.getElementById("cantCarrito");
-    cantCarrito.innerHTML = carrito.calcularCantTotalProductos();
 
     for(const producto of carrito.productos){
       let row = document.createElement("div");
@@ -344,38 +347,20 @@ function mostrarCarrito(){
 }
 
 function mostrarCheckout(){
-  clearScreen();
   breadCrumb("Checkout");
+
   let containerCheckout = document.createElement("div");
   containerCheckout.id = "containerCheckout";
   containerCheckout.className = "container";
   document.body.append(containerCheckout);
   containerCheckout.innerHTML = `
   <div class="row g-5">
-      <div class="col-md-5 col-lg-4 order-md-last">
+      <div class="col-md-5 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Tu Carrito</span>
-          <span class="badge bg-primary rounded-pill">3</span>
+          <span class="badge bg-primary rounded-pill">${carrito.calcularCantTotalProductos()}</span>
         </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-light">
-            <div class="text-success">
-              <h6 class="my-0">Código de Descuento</h6>
-              <small>EXAMPLECODE</small>
-            </div>
-            <span class="text-success">-$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (ARS$)</span>
-            <strong>$20</strong>
-          </li>
+        <ul class="list-group mb-3" id="listCheckout">
         </ul>
 
         <form class="card p-2">
@@ -386,7 +371,7 @@ function mostrarCheckout(){
         </form>
       </div>
 
-      <div class="col-md-7 col-lg-8">
+      <div class="col-md-7">
         <h4 class="mb-3">Datos del Envío</h4>
         <form>
           <div class="row g-3">
@@ -450,6 +435,65 @@ function mostrarCheckout(){
       </div>
     </div>
   `;
+
+  listenerBotonPagar();
+
+  let listCheckout = document.getElementById("listCheckout");
+  for (const producto of carrito.productos) {
+    listCheckout.innerHTML += `
+                              <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                  <h6 class="my-0">${producto.nombre}</h6>
+                                  <small class="text-muted">${producto.cantidad} x $${producto.precio.toLocaleString()}</small>
+                                </div>
+                                <span class="text-muted">$${producto.calcularPrecioTotalProducto().toLocaleString()}</span>
+                              </li>
+                              `;
+    
+  }
+
+  listCheckout.innerHTML += `
+                            <li class="list-group-item d-flex justify-content-between bg-light">
+                              <div class="text-success">
+                                <h6 class="my-0">Código de Descuento</h6>
+                                <small>EXAMPLECODE</small>
+                              </div>
+                              <span class="text-success">-$5</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                              <span>Total (ARS$)</span>
+                              <strong>$${carrito.calcularPrecioTotal().toLocaleString()}</strong>
+                            </li>
+                            `;
+}
+
+function mostrarTicket(){
+  breadCrumb("Ticket");
+
+  let containerTicket = document.createElement("div");
+  containerTicket.id = "containerTicket";
+  containerTicket.className = "container col-12";
+  document.body.append(containerTicket);
+  containerTicket.innerHTML = `<h3 class="my-4">Gracias por su compra!</h3><h5 class="my-2">Resumen:</h5>`;
+  for(const producto of carrito.productos){
+    let row = document.createElement("div");
+    row.id = `card-ticket-${producto.id}`;
+    row.className = "card-ticket row mb-1 m-auto p-2 text-left position-relative border rounded";
+    row.innerHTML = `
+                      <div class="col-2 my-auto"><img class="card-ticket-img m-2 ms-5" src="${producto.imgRoute}" alt="${producto.nombre}"></div>
+                      <div class="col-10 p-0 lh-2 my-auto">
+                        <p class="card-ticket-text my-auto"><b>${producto.nombre}</b></p>
+                        <p class="card-ticket-text my-auto" id="card-${producto.id}-cantidad">Cantidad: ${producto.cantidad}</p>
+                        <p class="card-ticket-text my-auto">$${producto.precio.toLocaleString()}</p>
+                      </div>
+                    `;
+    containerTicket.append(row);
+  }
+  containerTicket.innerHTML += `<div class="precio-total py-1"><h5 class="my-2">TOTAL: $${carrito.calcularPrecioTotal().toLocaleString()}</h5></div>
+                                <a href="index.html"><p class="text-end">Seguir comprando</p></a>
+                                `;
+  emptyCarrito();
+  mostrarCarrito();
 }
 
 function clearScreen(){
@@ -559,5 +603,12 @@ function addButtonCheckout(){
   }
 
   return botonCheckout;
+}
+
+function listenerBotonPagar(){
+  let botonPagar = document.getElementById("botonPagar");
+  botonPagar.onclick = function () {
+    mostrarTicket();
+  }
 }
 //----------------------------------------------------------------------------------------------------------
