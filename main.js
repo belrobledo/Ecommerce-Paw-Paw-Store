@@ -44,11 +44,11 @@ class Carrito{
     }
 
     calcularPrecioTotal(){
-        let suma = 0;
-        for(let producto of this.productos){
-            suma += (producto.precio * producto.cantidad);
-        }
-        return suma;
+      let suma = 0;
+      for(let producto of this.productos){
+          suma += (producto.precio * producto.cantidad);
+      }
+      return suma;
     }
 
     calcularCantTotalProductos(){
@@ -362,13 +362,6 @@ function mostrarCheckout(){
         </h4>
         <ul class="list-group mb-3" id="listCheckout">
         </ul>
-
-        <form class="card p-2">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Código de Descuento">
-            <button type="submit" class="btn btn-secondary">Canjear</button>
-          </div>
-        </form>
       </div>
 
       <div class="col-md-7">
@@ -436,8 +429,6 @@ function mostrarCheckout(){
     </div>
   `;
 
-  listenerBotonPagar();
-
   let listCheckout = document.getElementById("listCheckout");
   for (const producto of carrito.productos) {
     listCheckout.innerHTML += `
@@ -453,18 +444,12 @@ function mostrarCheckout(){
   }
 
   listCheckout.innerHTML += `
-                            <li class="list-group-item d-flex justify-content-between bg-light">
-                              <div class="text-success">
-                                <h6 class="my-0">Código de Descuento</h6>
-                                <small>EXAMPLECODE</small>
-                              </div>
-                              <span class="text-success">-$5</span>
-                            </li>
                             <li class="list-group-item d-flex justify-content-between">
                               <span>Total (ARS$)</span>
                               <strong>$${carrito.calcularPrecioTotal().toLocaleString()}</strong>
                             </li>
                             `;
+  listenerBotonPagar();
 }
 
 function mostrarTicket(){
