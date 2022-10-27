@@ -329,7 +329,7 @@ function listarProductos(auxLista = []) {
 function mostrarCarrito(){
   let containerCarrito = document.getElementById("containerCarrito");
   if(carrito.productos.length === 0){
-    containerCarrito.innerHTML = `<p>El carrito está vacío.</p>`;
+    containerCarrito.innerHTML = `<p class="ms-4">El carrito está vacío.</p>`;
   }
   else{
     containerCarrito.innerHTML = "";
@@ -346,53 +346,31 @@ function mostrarCarrito(){
                         <div class="col-4 my-auto"><img class="card-cart-img" src="${producto.imgRoute}" alt="${producto.nombre}"></div>
                         <div class="col-8 p-0 lh-2 my-auto">
                           <p class="card-cart-text my-auto"><b>${producto.nombre}</b></p>
-                          <p class="card-cart-text my-auto card-${producto.id}-cantidad">Cantidad: ${producto.cantidad}</p>
+                          <p class="card-cart-text my-auto" id="card-${producto.id}-cantidad">Cantidad: ${producto.cantidad}</p>
                           <p class="card-cart-text my-auto">$${producto.precio.toLocaleString()}</p>
                         </div>
                       `;
       containerCarrito.append(row);
-
-      let botonEliminarProducto = document.createElement("button");
-      row.appendChild(botonEliminarProducto);
-      botonEliminarProducto.id = `botonEliminarProducto-${producto.id}`;
-      botonEliminarProducto.className = "btn btn-outline-dark w-auto position-absolute end-0 bottom-0 my-2";
-      botonEliminarProducto.textContent = "eliminar";
-      
-      console.log(botonEliminarProducto);
-
-      // botonEliminarProducto.onclick = function () {
-      //   console.log("test");
-      // }
-
-      botonEliminarProducto.addEventListener("click", function () {
-        console.log("test");
-      });
-
-      //row.appendChild(addButtonEliminarProducto(producto));
+      row.appendChild(addButtonEliminarProducto(producto));
     }
-
-    function test(){
-      console.log("test");
-    }
-
-    containerCarrito.innerHTML += `<div class="precio-total py-1"><h5><b>TOTAL: $${carrito.calcularPrecioTotal().toLocaleString()}</b></h5></div>`;
+    containerCarrito.innerHTML += `<div class="precio-total py-1"><h5><b id="precioTotal">TOTAL: $${carrito.calcularPrecioTotal().toLocaleString()}</b></h5></div>`;
 
     containerCarrito.append(addButtonVaciarCarrito());
+    containerCarrito.append(addButtonCheckout());
   }
 }
-
 //----------------------------------------------------------------------------------------------------------
 
 
 
 //----AGREGAR-BOTONES---------------------------------------------------------------------------------------
 function addButtonComprar(producto){
-    let boton = document.createElement("button");
-    boton.id = `botonProducto-${producto.id}`;
-    boton.className = "btn btn-outline-primary position-absolute bottom-0 end-0 m-3";
-    boton.textContent = "Comprar";
+    let botonComprar = document.createElement("button");
+    botonComprar.id = `botonProducto-${producto.id}`;
+    botonComprar.className = "btn btn-outline-primary position-absolute bottom-0 end-0 m-3";
+    botonComprar.textContent = "Comprar";
 
-    boton.onclick = function() {
+    botonComprar.onclick = function() {
         carrito.agregarProducto(producto);
         saveCarrito(carrito);
         mostrarCarrito();
@@ -410,42 +388,39 @@ function addButtonComprar(producto){
             }).showToast();
     }
 
-    return boton;
+    return botonComprar;
 }
 
 function addButtonEliminarProducto(producto){
   let botonEliminarProducto = document.createElement("button");
   botonEliminarProducto.id = `botonEliminarProducto-${producto.id}`;
-  botonEliminarProducto.className = "btn w-auto position-absolute end-0 bottom-0 my-2 boton-eliminar-producto";
+  botonEliminarProducto.className = "btn border-hidden w-auto position-absolute end-0 bottom-0 my-2 boton-eliminar-producto";
   botonEliminarProducto.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 50 50" style=" fill:#212529;">
-  <path d="M 21 2 C 19.354545 2 18 3.3545455 18 5 L 18 7 L 10.154297 7 A 1.0001 1.0001 0 0 0 9.984375 6.9863281 A 1.0001 1.0001 0 0 0 9.8398438 7 L 8 7 A 1.0001 1.0001 0 1 0 8 9 L 9 9 L 9 45 C 9 46.645455 10.354545 48 12 48 L 38 48 C 39.645455 48 41 46.645455 41 45 L 41 9 L 42 9 A 1.0001 1.0001 0 1 0 42 7 L 40.167969 7 A 1.0001 1.0001 0 0 0 39.841797 7 L 32 7 L 32 5 C 32 3.3545455 30.645455 2 29 2 L 21 2 z M 21 4 L 29 4 C 29.554545 4 30 4.4454545 30 5 L 30 7 L 20 7 L 20 5 C 20 4.4454545 20.445455 4 21 4 z M 11 9 L 18.832031 9 A 1.0001 1.0001 0 0 0 19.158203 9 L 30.832031 9 A 1.0001 1.0001 0 0 0 31.158203 9 L 39 9 L 39 45 C 39 45.554545 38.554545 46 38 46 L 12 46 C 11.445455 46 11 45.554545 11 45 L 11 9 z M 18.984375 13.986328 A 1.0001 1.0001 0 0 0 18 15 L 18 40 A 1.0001 1.0001 0 1 0 20 40 L 20 15 A 1.0001 1.0001 0 0 0 18.984375 13.986328 z M 24.984375 13.986328 A 1.0001 1.0001 0 0 0 24 15 L 24 40 A 1.0001 1.0001 0 1 0 26 40 L 26 15 A 1.0001 1.0001 0 0 0 24.984375 13.986328 z M 30.984375 13.986328 A 1.0001 1.0001 0 0 0 30 15 L 30 40 A 1.0001 1.0001 0 1 0 32 40 L 32 15 A 1.0001 1.0001 0 0 0 30.984375 13.986328 z"></path>
-  </svg>`;
+    <path d="M 21 2 C 19.354545 2 18 3.3545455 18 5 L 18 7 L 10.154297 7 A 1.0001 1.0001 0 0 0 9.984375 6.9863281 A 1.0001 1.0001 0 0 0 9.8398438 7 L 8 7 A 1.0001 1.0001 0 1 0 8 9 L 9 9 L 9 45 C 9 46.645455 10.354545 48 12 48 L 38 48 C 39.645455 48 41 46.645455 41 45 L 41 9 L 42 9 A 1.0001 1.0001 0 1 0 42 7 L 40.167969 7 A 1.0001 1.0001 0 0 0 39.841797 7 L 32 7 L 32 5 C 32 3.3545455 30.645455 2 29 2 L 21 2 z M 21 4 L 29 4 C 29.554545 4 30 4.4454545 30 5 L 30 7 L 20 7 L 20 5 C 20 4.4454545 20.445455 4 21 4 z M 11 9 L 18.832031 9 A 1.0001 1.0001 0 0 0 19.158203 9 L 30.832031 9 A 1.0001 1.0001 0 0 0 31.158203 9 L 39 9 L 39 45 C 39 45.554545 38.554545 46 38 46 L 12 46 C 11.445455 46 11 45.554545 11 45 L 11 9 z M 18.984375 13.986328 A 1.0001 1.0001 0 0 0 18 15 L 18 40 A 1.0001 1.0001 0 1 0 20 40 L 20 15 A 1.0001 1.0001 0 0 0 18.984375 13.986328 z M 24.984375 13.986328 A 1.0001 1.0001 0 0 0 24 15 L 24 40 A 1.0001 1.0001 0 1 0 26 40 L 26 15 A 1.0001 1.0001 0 0 0 24.984375 13.986328 z M 30.984375 13.986328 A 1.0001 1.0001 0 0 0 30 15 L 30 40 A 1.0001 1.0001 0 1 0 32 40 L 32 15 A 1.0001 1.0001 0 0 0 30.984375 13.986328 z"></path>
+    </svg>`;
 
-  botonEliminarProducto.onclick = function () {
-    console.log("uwu");
-    if(producto.cantidad===1){
-      botonEliminarProducto.parentElement.remove();
-    }else{
-        let textCantidad = document.getElementById(`card-${producto.id}-cantidad`);
-        textCantidad.innerHTML = `<p class="card-cart-text my-auto card-${producto.id}-cantidad">Cantidad: ${producto.cantidad - 1}</p>`;
-    }
-    carrito.eliminarProducto(producto);
-    saveCarrito();
-
-    if(carrito.productos.length === 0){
-      emptyCarrito();
-      mostrarCarrito();
-    }
-  }
+  botonEliminarProducto.setAttribute("onclick", `eliminarProductoCarrito(${producto.id})`);
 
   return botonEliminarProducto;
+}
+
+function eliminarProductoCarrito(idProducto){
+  let producto = carrito.productos.find((elemento) => elemento.id === idProducto);
+
+  carrito.eliminarProducto(producto);
+  saveCarrito();
+  if(carrito.productos.length === 0){
+    emptyCarrito();
+  }
+
+  mostrarCarrito();
 }
 
 function addButtonVaciarCarrito(){
   let botonVaciarCarrito = document.createElement("button");
   botonVaciarCarrito.id = `botonVaciarCarrito`;
-  botonVaciarCarrito.className = "btn border border-light rounded-pill position-absolute bottom-0 start-0 m-3";
-  botonVaciarCarrito.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 50 50" style=" fill:#f8f9fa;">
+  botonVaciarCarrito.className = "btn btn-light opacity-75 position-absolute bottom-0 start-0 m-3";
+  botonVaciarCarrito.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="29" height="29" viewBox="0 0 50 50" style=" fill:#212529;">
   <path d="M 21 2 C 19.354545 2 18 3.3545455 18 5 L 18 7 L 10.154297 7 A 1.0001 1.0001 0 0 0 9.984375 6.9863281 A 1.0001 1.0001 0 0 0 9.8398438 7 L 8 7 A 1.0001 1.0001 0 1 0 8 9 L 9 9 L 9 45 C 9 46.645455 10.354545 48 12 48 L 38 48 C 39.645455 48 41 46.645455 41 45 L 41 9 L 42 9 A 1.0001 1.0001 0 1 0 42 7 L 40.167969 7 A 1.0001 1.0001 0 0 0 39.841797 7 L 32 7 L 32 5 C 32 3.3545455 30.645455 2 29 2 L 21 2 z M 21 4 L 29 4 C 29.554545 4 30 4.4454545 30 5 L 30 7 L 20 7 L 20 5 C 20 4.4454545 20.445455 4 21 4 z M 11 9 L 18.832031 9 A 1.0001 1.0001 0 0 0 19.158203 9 L 30.832031 9 A 1.0001 1.0001 0 0 0 31.158203 9 L 39 9 L 39 45 C 39 45.554545 38.554545 46 38 46 L 12 46 C 11.445455 46 11 45.554545 11 45 L 11 9 z M 18.984375 13.986328 A 1.0001 1.0001 0 0 0 18 15 L 18 40 A 1.0001 1.0001 0 1 0 20 40 L 20 15 A 1.0001 1.0001 0 0 0 18.984375 13.986328 z M 24.984375 13.986328 A 1.0001 1.0001 0 0 0 24 15 L 24 40 A 1.0001 1.0001 0 1 0 26 40 L 26 15 A 1.0001 1.0001 0 0 0 24.984375 13.986328 z M 30.984375 13.986328 A 1.0001 1.0001 0 0 0 30 15 L 30 40 A 1.0001 1.0001 0 1 0 32 40 L 32 15 A 1.0001 1.0001 0 0 0 30.984375 13.986328 z"></path>
   </svg>`;
 
@@ -469,5 +444,17 @@ function addButtonVaciarCarrito(){
   }
 
   return botonVaciarCarrito;
+}
+
+function addButtonCheckout(){
+  let botonCheckout = document.createElement("button");
+  botonCheckout.id = `botonCheckout`;
+  botonCheckout.className = "btn btn-light opacity-75 position-absolute bottom-0 end-0 m-3 p-2";
+  botonCheckout.textContent = "Finalizar Compra";
+
+  botonCheckout.onclick = function () {
+  }
+
+  return botonCheckout;
 }
 //----------------------------------------------------------------------------------------------------------

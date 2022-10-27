@@ -172,8 +172,24 @@
 }
 
 #botonVaciarCarrito:hover {
-  background-color: rgba(239, 243, 247, 0.2588235294);
+  background-color: #f8f9fa;
+  opacity: 1;
   scale: 110%;
+}
+
+#botonCheckout:hover {
+  background-color: #f8f9fa;
+  opacity: 1;
+  scale: 110%;
+}
+
+.boton-eliminar-producto:hover {
+  scale: 110%;
+}
+
+.boton-eliminar-producto:active {
+  scale: 110%;
+  border: hidden;
 }
 
 /*!

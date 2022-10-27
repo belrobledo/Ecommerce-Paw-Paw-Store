@@ -21,7 +21,7 @@ $btn-border-radius:1.35rem;
 @import "./node_modules/bootstrap/scss/variables";
 @import "./node_modules/bootstrap/scss/mixins";
 //--------------------------------------------------------------------------------------------------------------
-
+ 
 :root{
     
 
@@ -34,6 +34,7 @@ $btn-border-radius:1.35rem;
     box-sizing: inherit;
 }
 
+//------NAVBAR-----------------------------------------------------------------------------------------------------
 .navbar-brand{
     position: relative;
 }
@@ -62,7 +63,11 @@ $btn-border-radius:1.35rem;
     background-color: #434a50;
     color: $light;
 }
+//--------------------------------------------------------------------------------------------------------------
 
+
+
+//-------HOME---------------------------------------------------------------------------------------------------
 #home-container{
     padding: 10px 20px;
 }
@@ -159,9 +164,11 @@ $btn-border-radius:1.35rem;
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
+//--------------------------------------------------------------------------------------------------------------
 
-//-----------------------------------------------------------------------------
 
+
+//------LIST-PRODUCTOS------------------------------------------------------------------------------------------
 .card{
     border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -174,8 +181,11 @@ $btn-border-radius:1.35rem;
     align-self: center;
     padding-bottom: 10px;
 }
+//--------------------------------------------------------------------------------------------------------------
 
-//---------------------------------------------------------------------------------
+
+
+//-------CARRITO------------------------------------------------------------------------------------------------
 .carrito{
     width: 600px;
     overflow: auto;
@@ -197,21 +207,25 @@ $btn-border-radius:1.35rem;
 }
 
 #botonVaciarCarrito:hover{
-    background-color: #eff3f742;
+    background-color: $light;
+    opacity: 1;
     scale: 110%;
 }
 
-// .boton-eliminar-producto:hover{
-//     border: hidden;
-// }
+#botonCheckout:hover{
+    background-color: $light;
+    opacity: 1;
+    scale: 110%;
+}
 
-// .boton-eliminar-producto:active{
-//     scale: 110%;
-//     border: hidden;
-// }
+.boton-eliminar-producto:hover{
+    scale: 110%;
+}
 
-// .boton-eliminar-producto{
-//     border: hidden; 
-// }
+.boton-eliminar-producto:active{
+    scale: 110%;
+    border: hidden;
+}
+//--------------------------------------------------------------------------------------------------------------
 
 @import "./node_modules/bootstrap/scss/bootstrap.scss"
