@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paw Paw Store</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<nav class="navbar bg-primary p-3" id="navbar" aria-label="Light offcanvas navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html" id="indexButton"><img src="img/logo.png" alt="Paw Paw Store" width="fit-content"
+        height="35"></a>
+    <form class="d-none d-md-flex mt-3 opacity-75" role="search" id="search">
+      <input class="form-control me-2 rounded-pill" type="search" id="searchInput" placeholder="Buscar productos" aria-label="Search">
+      <button class="btn btn-outline-light" type="submit" id="searchButton">Buscar</button>
+    </form>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight"
+      aria-controls="offcanvasNavbarLight">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart"
+        viewBox="0 0 16 16">
+        <path
+          d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      </svg>
+      <span class="cart-amount" id="cantCarrito">0</span>
+    </button>
+    <div class="offcanvas offcanvas-end bg-primary text-light carrito" style="width: 450px;" tabindex="-1" id="offcanvasNavbarLight"
+      aria-labelledby="offcanvasNavbarLightLabel">
+      <div class="offcanvas-header">
+        <h4 class="offcanvas-title" id="offcanvasNavbarLightLabel">Carrito</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body" id="containerCarrito">
+        <!--fill with js-->
+      </div>
+    </div>
+  </div>
+</nav>
+
+<body>
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="main.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

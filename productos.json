@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "nombre": "Rascador para gatos - CanCat",
+        "precio": 25000,
+        "categoria": "Gato",
+        "cantidad": "1",
+        "imgRoute": "./img/productos/product1.webp"
+    },
+    {
+        "id": "2",
+        "nombre": "Juguete circuito azul - Catit",
+        "precio": 3971,
+        "categoria": "Gato",
+        "cantidad": "1",
+        "imgRoute": "./img/productos/product2.webp"
+    },
+    {
+        "id": "3",
+        "nombre": "Juguete para perro Hueso Dental - FerPlast",
+        "precio": 4420,
+        "categoria": "Perro",
+        "cantidad": "1",
+        "imgRoute": "./img/productos/product3.webp"
+    },
+    {
+        "id": "4",
+        "nombre": "Juguete para perro Peluche Koala c/sonido - Gigwi",
+        "precio": 5320,
+        "categoria": "Perro",
+        "cantidad": "1",
+        "imgRoute": "./img/productos/product4.webp"
+    },
+    {
+        "id": "5",
+        "nombre": "Excellent para Gatos Adultos - 3kg",
+        "precio": 3110,
+        "categoria": "Alimento",
+        "cantidad": "1",
+        "imgRoute": "./img/productos/product5.webp"
+    },
+    {
+        "id": "6",
+        "nombre": "Royal Canin mini Adultos - 7,5kg",
+        "precio": 8126,
+        "categoria": "Alimento",
+        "cantidad": "1",
+        "imgRoute": "./img/productos/product6.webp"
+    }
+]

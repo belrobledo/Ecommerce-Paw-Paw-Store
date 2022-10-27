@@ -1,0 +1,217 @@
+/*! `Custom` Bootstrap 5 theme */
+@import url(https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css);
+@import url(https://fonts.googleapis.com/css?family=Nunito:200,300,400,700);
+$headings-font-family:Nunito;
+
+$primary:#7FBCD2;
+$secondary:#AAAAAA;
+$success:#219935;
+$danger:#dc3545;
+$info:#0dcaf0;
+$warning:#ffc107;
+$light:#f8f9fa;
+$dark:#212529;
+$enable-gradients:false;
+$spacer:1rem;
+$border-width:1px;
+$btn-border-radius:1.35rem;
+
+//--------------------------------------------------------------------------------------------------------------
+@import "./node_modules/bootstrap/scss/functions";
+@import "./node_modules/bootstrap/scss/variables";
+@import "./node_modules/bootstrap/scss/mixins";
+//--------------------------------------------------------------------------------------------------------------
+
+:root{
+    
+
+    body{
+        background-color:#f5f5f5; 
+    }
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+.navbar-brand{
+    position: relative;
+}
+
+#search{
+    position: absolute;
+    left: 350px;
+    bottom: 25%;
+}
+
+.navbar-toggler{
+    position: relative;
+}
+
+.cart-amount {
+    font-size: 10px;
+    position: absolute;
+    top: -3px;
+    right: 2px;
+    border-radius: 50%;
+    height: 17px;
+    width: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #434a50;
+    color: $light;
+}
+
+#home-container{
+    padding: 10px 20px;
+}
+
+.textbanner{
+    position: relative;
+    overflow: hidden;
+    height: calc(100vh - 130px);
+    transition: all 0.8 ease;
+    cursor: pointer;
+    font-size: 250%;
+}
+
+.textbanner.mid{
+    height: calc(50vh - 81px);
+}
+
+.textbanner.img-1{
+    background: url(/img/pet_store-509173668-5ad27f86c0647100380c4f0d.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+}
+
+.textbanner.img-1:hover{
+    opacity: 0.7;
+}
+
+.textbanner.img-2{
+    background: url(/img/catStore.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.9;
+}
+
+.textbanner.img-2:hover{
+    opacity: 0.7;
+}
+
+.textbanner.img-3{
+    background: url(/img/toypets.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.9;
+}
+
+.textbanner.img-3:hover{
+    opacity: 0.7;
+}
+
+.textbanner.img-4{
+    background: url(/img/GettyImages_1153468010.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.9;
+}
+
+.textbanner.img-4:hover{
+    opacity: 0.7;
+}
+
+.textbanner-text{
+    position: absolute;
+    text-align: center;
+    top: 35%;
+    width: 100%;
+}
+
+.textbanner-title{
+    color: $light;
+    font-size: 1.4em;
+}
+
+.textbanner-button{
+    position: absolute;
+    top: 80%;
+    translate: -104px;
+}
+
+.textbanner-button:hover{
+    opacity: 0.8;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(216, 216, 216);
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+//-----------------------------------------------------------------------------
+
+.card{
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    color:#384047;
+    background-color: #eff3f7;
+}
+
+.img-product{
+    width: 200px;
+    align-self: center;
+    padding-bottom: 10px;
+}
+
+//---------------------------------------------------------------------------------
+.carrito{
+    width: 600px;
+    overflow: auto;
+}
+
+.card-cart{
+    border-radius: 10px;
+    color:#384047e5;
+    background-color: #eff3f7c7;
+}
+
+.card-cart-img{
+    width: 100px;
+    align-self: left;
+}
+
+.precio-total{
+    text-align: right;
+}
+
+#botonVaciarCarrito:hover{
+    background-color: #eff3f742;
+    scale: 110%;
+}
+
+// .boton-eliminar-producto:hover{
+//     border: hidden;
+// }
+
+// .boton-eliminar-producto:active{
+//     scale: 110%;
+//     border: hidden;
+// }
+
+// .boton-eliminar-producto{
+//     border: hidden; 
+// }
+
+@import "./node_modules/bootstrap/scss/bootstrap.scss"
