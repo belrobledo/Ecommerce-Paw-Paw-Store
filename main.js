@@ -427,7 +427,7 @@ function mostrarCheckout(){
         </form>
       </div>
     </div>
-  `;
+  `; //Este formulario con datos de envio y pago no realiza ninguna comprobacion u accion ya que no esta incluido en el alcance de este proyecto.
 
   let listCheckout = document.getElementById("listCheckout");
   for (const producto of carrito.productos) {
@@ -459,7 +459,7 @@ function mostrarTicket(){
   containerTicket.id = "containerTicket";
   containerTicket.className = "container col-12";
   document.body.append(containerTicket);
-  containerTicket.innerHTML = `<h3 class="my-4">Gracias por su compra!</h3><h5 class="my-2">Resumen:</h5>`;
+  containerTicket.innerHTML = `<h3 class="my-4 text-success">Gracias por su compra!</h3><h5 class="my-2">Resumen:</h5>`;
   for(const producto of carrito.productos){
     let row = document.createElement("div");
     row.id = `card-ticket-${producto.id}`;
@@ -506,7 +506,7 @@ function addButtonComprar(producto) {
 
     Toastify({
       text: `"${producto.nombre}" agregado al carrito.`,
-      duration: 2000,
+      duration: 1200,
       stopOnFocus: true,
       offset: {
         y: 75,
