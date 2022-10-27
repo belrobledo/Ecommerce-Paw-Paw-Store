@@ -97,39 +97,33 @@ async function cargarListaProductos() {
 
 function indexListener(){
     let auxLista = [];
-    let containerIndex = document.getElementById("containerIndex");
 
     let opcion1 = document.getElementById("bannerProductos");
     opcion1.onclick = function() {
-        containerIndex.remove();
-        breadCrumb();
+        breadCrumb("Productos");
         listarProductos()};
 
     let opcion2 = document.getElementById("bannerGatos");
     opcion2.onclick = function() {
-        containerIndex.remove();
         auxLista = listaProductos.filter((elemento) => elemento.categoria == "Gato");
         breadCrumb("Gatos");
         listarProductos(auxLista);};
 
     let opcion3 = document.getElementById("bannerPerros");
     opcion3.onclick = function() {
-        containerIndex.remove();
         auxLista = listaProductos.filter((elemento) => elemento.categoria == "Perro");
         breadCrumb("Perros");
         listarProductos(auxLista);};
 
     let opcion4 = document.getElementById("bannerAlimentos");
     opcion4.onclick = function() {
-        containerIndex.remove();
         auxLista = listaProductos.filter((elemento) => elemento.categoria == "Alimento");
         breadCrumb("Alimento");
         listarProductos(auxLista);};
 
     let busqueda = document.getElementById("searchButton");
     busqueda.onclick = function() {
-        containerIndex.remove();
-        breadCrumb("busqueda");
+        breadCrumb("Búsqueda");
         buscarProductoPorNombre();};
 }
 
@@ -144,27 +138,20 @@ function buscarProductoPorNombre(){
 }
 
 function obtenerProductoIngresado(event){
-  let resultado = document.getElementById("searchResult");
-  let containerProductos = document.getElementById("containerProductos");
-  if(resultado){
-    resultado.remove();
-  }
-  if(containerProductos){
-    containerProductos.remove();
-  }
+  document.getElementById("searchResult") && document.getElementById("searchResult").remove();
+  document.getElementById("containerProductos") && document.getElementById("containerProductos").remove();
 
   event.preventDefault();
   let formulario = event.target;
   let auxLista = [];
   let nombre = formulario.children[0].value;
   auxLista = listaProductos.filter((elemento) => elemento.nombre.toLowerCase().includes(nombre.trim().toLowerCase()));
-  console.log(auxLista);
   //"includes" para que pueda buscar por un fragmento del string y no solo por la palabra completa.
   if(auxLista.length === 0){
       let resultado = document.createElement("p");
       resultado.id = "searchResult";
       resultado.className = "text-center";
-      resultado.innerText = "No se encontraron productos que coincidan con la busqueda.";
+      resultado.innerText = "No se encontraron productos que coincidan con la búsqueda.";
       document.body.append(resultado);
   }
   else{
@@ -209,79 +196,78 @@ function indexView() {
     containerIndex.id = "containerIndex";
     containerIndex.innerHTML = 
     `
-    <div class="container-fluid" id="home-container">
-    <div class="row">
-      <div class="col-sm-12 col-md-4 col-lg-3 p-3">
-        <div class="textbanner-link" href="index.html" title="Productos" id="bannerProductos">
-          <div class="textbanner img-1">
-            <!--img as bg in styles.scss-->
-            <div class="textbanner-text">
-              <p class="textbanner-title"><b>PRODUCTOS</b></p>
-              <button class="btn btn-outline-light textbanner-button">Ver todos los Productos</button>
+      <div class="container-fluid" id="home-container">
+        <div class="row">
+          <div class="col-sm-12 col-md-4 col-lg-3 p-3">
+            <div class="textbanner-link" href="index.html" title="Productos" id="bannerProductos">
+              <div class="textbanner img-1">
+                <!--img as bg in styles.scss-->
+                <div class="textbanner-text">
+                  <p class="textbanner-title"><b>PRODUCTOS</b></p>
+                  <button class="btn btn-outline-light textbanner-button">Ver todos los Productos</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-8 col-lg-9">
+            <div class="row">
+              <div class="col-12 col-sm-12 p-3">
+                <div class="textbanner-link" href="index.html" title="Gatos" id="bannerGatos">
+                  <div class="textbanner mid background img-2">
+                    <!--img as bg in styles.scss-->
+                    <div class="textbanner-text">
+                      <p class="textbanner-title"><b>GATOS</b></p>
+                      <button class="btn btn-outline-light textbanner-button">Ver productos para Gatos</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6 p-3">
+                <div class="textbanner-link" href="index.html" title="Perros" id="bannerPerros">
+                  <div class="textbanner mid img-3">
+                    <!--img as bg in styles.scss-->
+                    <div class="textbanner-text">
+                      <p class="textbanner-title"><b>PERROS</b></p>
+                      <button class="btn btn-outline-light textbanner-button">Ver productos para Perros</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 p-3">
+                <div class="textbanner-link" href="index.html" title="Alimentos" id="bannerAlimentos">
+                  <div class="textbanner mid img-4">
+                    <!--img as bg in styles.scss-->
+                    <div class="textbanner-text">
+                      <p class="textbanner-title"><b>ALIMENTO</b></p>
+                      <button class="btn btn-outline-light textbanner-button">Ver Alimentos Balanceados</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-8 col-lg-9">
-        <div class="row">
-          <div class="col-12 col-sm-12 p-3">
-            <div class="textbanner-link" href="index.html" title="Gatos" id="bannerGatos">
-              <div class="textbanner mid background img-2">
-                <!--img as bg in styles.scss-->
-                <div class="textbanner-text">
-                  <p class="textbanner-title"><b>GATOS</b></p>
-                  <button class="btn btn-outline-light textbanner-button">Ver productos para Gatos</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 col-md-6 p-3">
-            <div class="textbanner-link" href="index.html" title="Perros" id="bannerPerros">
-              <div class="textbanner mid img-3">
-                <!--img as bg in styles.scss-->
-                <div class="textbanner-text">
-                  <p class="textbanner-title"><b>PERROS</b></p>
-                  <button class="btn btn-outline-light textbanner-button">Ver productos para Perros</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 p-3">
-            <div class="textbanner-link" href="index.html" title="Alimentos" id="bannerAlimentos">
-              <div class="textbanner mid img-4">
-                <!--img as bg in styles.scss-->
-                <div class="textbanner-text">
-                  <p class="textbanner-title"><b>ALIMENTO</b></p>
-                  <button class="btn btn-outline-light textbanner-button">Ver Alimentos Balanceados</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
     `;
     document.body.appendChild(containerIndex);
 
     indexListener();
 }
 
-function breadCrumb(categoria = "all"){
-  if(document.getElementById("containerBreadCrumb")){
-    document.getElementById("containerBreadCrumb").remove();
-  }
+function breadCrumb(categoria = "Productos"){
+  clearScreen();
+
   let containerBreadCrumb = document.createElement("div");
   document.body.appendChild(containerBreadCrumb);
   containerBreadCrumb.id = "containerBreadCrumb";
   containerBreadCrumb.className = "container pt-4 ps-5";
-  if(categoria === "all"){
+  if(categoria === "Productos" || categoria === "Checkout"){
     containerBreadCrumb.innerHTML = `
                                   <ol class="breadcrumb" style="--bs-breadcrumb-divider: '>';">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Productos</li>
+                                    <li class="breadcrumb-item active" aria-current="page">${categoria}</li>
                                   </ol>`;
   }
   else{
@@ -302,9 +288,6 @@ function breadCrumb(categoria = "all"){
 }
 
 function listarProductos(auxLista = []) {
-  if (document.getElementById("containerProductos")) {
-    document.getElementById("containerProductos").remove();
-  }
 
   let containerProductos = document.createElement("div");
   document.body.append(containerProductos);
@@ -359,36 +342,50 @@ function mostrarCarrito(){
     containerCarrito.append(addButtonCheckout());
   }
 }
+
+function mostrarCheckout(){
+  clearScreen();
+  breadCrumb("Checkout");
+  let containerCheckout = document.createElement("div");
+  containerCheckout.innerHTML = `uwu`;
+}
+
+function clearScreen(){
+  document.getElementById("containerIndex") && document.getElementById("containerIndex").remove();
+  document.getElementById("containerBreadCrumb") && document.getElementById("containerBreadCrumb").remove();
+  document.getElementById("searchResult") && document.getElementById("searchResult").remove();
+  document.getElementById("containerProductos") && document.getElementById("containerProductos").remove();
+}
 //----------------------------------------------------------------------------------------------------------
 
 
 
 //----AGREGAR-BOTONES---------------------------------------------------------------------------------------
-function addButtonComprar(producto){
-    let botonComprar = document.createElement("button");
-    botonComprar.id = `botonProducto-${producto.id}`;
-    botonComprar.className = "btn btn-outline-primary position-absolute bottom-0 end-0 m-3";
-    botonComprar.textContent = "Comprar";
+function addButtonComprar(producto) {
+  let botonComprar = document.createElement("button");
+  botonComprar.id = `botonProducto-${producto.id}`;
+  botonComprar.className = "btn btn-outline-primary position-absolute bottom-0 end-0 m-3";
+  botonComprar.textContent = "Comprar";
 
-    botonComprar.onclick = function() {
-        carrito.agregarProducto(producto);
-        saveCarrito(carrito);
-        mostrarCarrito();
+  botonComprar.onclick = function () {
+    carrito.agregarProducto(producto);
+    saveCarrito(carrito);
+    mostrarCarrito();
 
-        Toastify({
-            text: `"${producto.nombre}" agregado al carrito.`,
-            duration: 2000,
-            stopOnFocus: true,
-            offset: {
-              y: 75
-            },
-            style: {
-                background: "#484D51"
-              }
-            }).showToast();
-    }
+    Toastify({
+      text: `"${producto.nombre}" agregado al carrito.`,
+      duration: 2000,
+      stopOnFocus: true,
+      offset: {
+        y: 75,
+      },
+      style: {
+        background: "#484D51",
+      },
+    }).showToast();
+  };
 
-    return botonComprar;
+  return botonComprar;
 }
 
 function addButtonEliminarProducto(producto){
@@ -450,9 +447,12 @@ function addButtonCheckout(){
   let botonCheckout = document.createElement("button");
   botonCheckout.id = `botonCheckout`;
   botonCheckout.className = "btn btn-light opacity-75 position-absolute bottom-0 end-0 m-3 p-2";
+  botonCheckout.setAttribute("data-bs-toggle", "offcanvas");
+  botonCheckout.setAttribute("data-bs-target", "#offcanvasNavbarLight");
   botonCheckout.textContent = "Finalizar Compra";
 
   botonCheckout.onclick = function () {
+    mostrarCheckout();
   }
 
   return botonCheckout;
