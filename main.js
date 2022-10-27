@@ -347,7 +347,109 @@ function mostrarCheckout(){
   clearScreen();
   breadCrumb("Checkout");
   let containerCheckout = document.createElement("div");
-  containerCheckout.innerHTML = `uwu`;
+  containerCheckout.id = "containerCheckout";
+  containerCheckout.className = "container";
+  document.body.append(containerCheckout);
+  containerCheckout.innerHTML = `
+  <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Tu Carrito</span>
+          <span class="badge bg-primary rounded-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Product name</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">$12</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-success">
+              <h6 class="my-0">Código de Descuento</h6>
+              <small>EXAMPLECODE</small>
+            </div>
+            <span class="text-success">-$5</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (ARS$)</span>
+            <strong>$20</strong>
+          </li>
+        </ul>
+
+        <form class="card p-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Código de Descuento">
+            <button type="submit" class="btn btn-secondary">Canjear</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Datos del Envío</h4>
+        <form>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="col-sm-6">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="apellido" required>
+            </div>
+            <div class="col-12">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            </div>
+            <div class="col-9">
+              <label for="direccion" class="form-label">Dirección</label>
+              <input type="text" class="form-control" id="direccion" placeholder="Calle 123, Ciudad, Provincia" required>
+            </div>
+            <div class="col-md-3">
+              <label for="cp" class="form-label">Código Postal</label>
+              <input type="text" class="form-control" id="cp" required>
+            </div>
+          </div><br>
+          <hr class="my-4">
+
+          <h4 class="mb-3">Forma de Pago</h4>
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="metodoPago" type="radio" class="form-check-input" checked required>
+              <label class="form-check-label" for="credit">Tarjeta de Crédito</label>
+            </div>
+            <div class="form-check">
+              <input id="debit" name="metodoPago" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="debit">Tarjeta de Débito</label>
+            </div>
+          </div>
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="cc-nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="cc-nombre" required>
+              <small class="text-muted">Nombre como figura en la tarjeta</small>
+            </div>
+            <div class="col-md-6">
+              <label for="cc-numero" class="form-label">Credit card number</label>
+              <input type="text" class="form-control" id="cc-numero" placeholder="xxxx-xxxx-xxxx-xxxx" required>
+            </div>
+            <div class="col-md-3">
+              <label for="cc-vencimiento" class="form-label">Vencimiento</label>
+              <input type="text" class="form-control" id="cc-vencimiento" placeholder="mm/aa" required>
+            </div>
+            <div class="col-md-3">
+              <label for="cc-cvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="cc-cvv" placeholder="xxx" required>
+            </div>
+          </div>
+
+          <hr class="my-4">
+          <button class="w-100 btn btn-primary btn-lg" type="submit" id="botonPagar">Finalizar Compra</button>
+        </form>
+      </div>
+    </div>
+  `;
 }
 
 function clearScreen(){
@@ -355,6 +457,7 @@ function clearScreen(){
   document.getElementById("containerBreadCrumb") && document.getElementById("containerBreadCrumb").remove();
   document.getElementById("searchResult") && document.getElementById("searchResult").remove();
   document.getElementById("containerProductos") && document.getElementById("containerProductos").remove();
+  document.getElementById("containerCheckout") && document.getElementById("containerCheckout").remove();
 }
 //----------------------------------------------------------------------------------------------------------
 
