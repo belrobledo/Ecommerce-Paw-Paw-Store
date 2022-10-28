@@ -64,7 +64,7 @@
 }
 
 .textbanner.img-1 {
-  background: url(/img/pet_store-509173668-5ad27f86c0647100380c4f0d.jpg);
+  background: url(/img/bannerProductos.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -79,7 +79,7 @@
 }
 
 .textbanner.img-2 {
-  background: url(/img/catStore.jpg);
+  background: url(/img/bannerGatos.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -94,7 +94,7 @@
 }
 
 .textbanner.img-3 {
-  background: url(/img/toypets.jpg);
+  background: url(/img/bannerPerros.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -109,7 +109,7 @@
 }
 
 .textbanner.img-4 {
-  background: url(/img/GettyImages_1153468010.jpg);
+  background: url(/img/bannerPeces.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

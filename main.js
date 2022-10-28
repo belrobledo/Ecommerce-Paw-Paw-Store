@@ -207,7 +207,7 @@ function indexView() {
               <div class="textbanner img-1">
                 <!--img as bg in styles.scss-->
                 <div class="textbanner-text">
-                  <p class="textbanner-title"><b>PRODUCTOS</b></p>
+                  <p class="textbanner-title"><b>Productos</b></p>
                   <button class="btn btn-outline-light textbanner-button">Ver todos los Productos</button>
                 </div>
               </div>
