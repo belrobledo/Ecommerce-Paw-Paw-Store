@@ -73,9 +73,9 @@
 
 .textbanner.img-1:hover {
   transform: scale(1.02);
-  -webkit-transition: transform 0.11s ease-in-out;
-  -moz-transition: transform 0.11s ease-in-out;
-  -ms-transition: transform 0.11s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out;
 }
 
 .textbanner.img-2 {
@@ -88,9 +88,9 @@
 
 .textbanner.img-2:hover {
   transform: scale(1.02);
-  -webkit-transition: transform 0.11s ease-in-out;
-  -moz-transition: transform 0.11s ease-in-out;
-  -ms-transition: transform 0.11s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out;
 }
 
 .textbanner.img-3 {
@@ -103,9 +103,9 @@
 
 .textbanner.img-3:hover {
   transform: scale(1.02);
-  -webkit-transition: transform 0.11s ease-in-out;
-  -moz-transition: transform 0.11s ease-in-out;
-  -ms-transition: transform 0.11s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out;
 }
 
 .textbanner.img-4 {
@@ -118,9 +118,9 @@
 
 .textbanner.img-4:hover {
   transform: scale(1.01);
-  -webkit-transition: transform 0.11s ease-in-out;
-  -moz-transition: transform 0.11s ease-in-out;
-  -ms-transition: transform 0.11s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out;
 }
 
 .textbanner-text {
