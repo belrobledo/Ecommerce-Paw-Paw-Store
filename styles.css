@@ -14,9 +14,16 @@
   position: relative;
 }
 
+.navbar-brand:hover {
+  transform: scale(1.02);
+  -webkit-transition: transform 0.11s ease-in-out;
+  -moz-transition: transform 0.11s ease-in-out;
+  -ms-transition: transform 0.11s ease-in-out;
+}
+
 #search {
   position: absolute;
-  left: 350px;
+  left: 335px;
   bottom: 25%;
 }
 
@@ -65,7 +72,10 @@
 }
 
 .textbanner.img-1:hover {
-  opacity: 0.7;
+  transform: scale(1.02);
+  -webkit-transition: transform 0.11s ease-in-out;
+  -moz-transition: transform 0.11s ease-in-out;
+  -ms-transition: transform 0.11s ease-in-out;
 }
 
 .textbanner.img-2 {
@@ -77,7 +87,10 @@
 }
 
 .textbanner.img-2:hover {
-  opacity: 0.7;
+  transform: scale(1.02);
+  -webkit-transition: transform 0.11s ease-in-out;
+  -moz-transition: transform 0.11s ease-in-out;
+  -ms-transition: transform 0.11s ease-in-out;
 }
 
 .textbanner.img-3 {
@@ -89,7 +102,10 @@
 }
 
 .textbanner.img-3:hover {
-  opacity: 0.7;
+  transform: scale(1.02);
+  -webkit-transition: transform 0.11s ease-in-out;
+  -moz-transition: transform 0.11s ease-in-out;
+  -ms-transition: transform 0.11s ease-in-out;
 }
 
 .textbanner.img-4 {
@@ -101,7 +117,10 @@
 }
 
 .textbanner.img-4:hover {
-  opacity: 0.7;
+  transform: scale(1.01);
+  -webkit-transition: transform 0.11s ease-in-out;
+  -moz-transition: transform 0.11s ease-in-out;
+  -ms-transition: transform 0.11s ease-in-out;
 }
 
 .textbanner-text {
