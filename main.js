@@ -109,20 +109,20 @@ function indexListener(){
 
     let opcion2 = document.getElementById("bannerGatos");
     opcion2.onclick = function() {
-        auxLista = listaProductos.filter((elemento) => elemento.categoria == "Gato");
+        auxLista = listaProductos.filter((elemento) => elemento.categoria == "Gatos");
         breadCrumb("Gatos");
         listarProductos(auxLista);};
 
     let opcion3 = document.getElementById("bannerPerros");
     opcion3.onclick = function() {
-        auxLista = listaProductos.filter((elemento) => elemento.categoria == "Perro");
+        auxLista = listaProductos.filter((elemento) => elemento.categoria == "Perros");
         breadCrumb("Perros");
         listarProductos(auxLista);};
 
-    let opcion4 = document.getElementById("bannerAlimentos");
+    let opcion4 = document.getElementById("bannerPeces");
     opcion4.onclick = function() {
-        auxLista = listaProductos.filter((elemento) => elemento.categoria == "Alimento");
-        breadCrumb("Alimento");
+        auxLista = listaProductos.filter((elemento) => elemento.categoria == "Peces");
+        breadCrumb("Peces");
         listarProductos(auxLista);};
 
     let busqueda = document.getElementById("searchButton");
@@ -220,7 +220,7 @@ function indexView() {
                   <div class="textbanner mid background img-2">
                     <!--img as bg in styles.scss-->
                     <div class="textbanner-text">
-                      <p class="textbanner-title"><b>GATOS</b></p>
+                      <p class="textbanner-title"><b>Gatos</b></p>
                       <button class="btn btn-outline-light textbanner-button">Ver productos para Gatos</button>
                     </div>
                   </div>
@@ -233,19 +233,19 @@ function indexView() {
                   <div class="textbanner mid img-3">
                     <!--img as bg in styles.scss-->
                     <div class="textbanner-text">
-                      <p class="textbanner-title"><b>PERROS</b></p>
+                      <p class="textbanner-title"><b>Perros</b></p>
                       <button class="btn btn-outline-light textbanner-button">Ver productos para Perros</button>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-sm-12 col-md-6 p-3">
-                <div class="textbanner-link" href="index.html" title="Alimentos" id="bannerAlimentos">
+                <div class="textbanner-link" href="index.html" title="Peces" id="bannerPeces">
                   <div class="textbanner mid img-4">
                     <!--img as bg in styles.scss-->
                     <div class="textbanner-text">
-                      <p class="textbanner-title"><b>ALIMENTO</b></p>
-                      <button class="btn btn-outline-light textbanner-button">Ver Alimentos Balanceados</button>
+                      <p class="textbanner-title"><b>Peces</b></p>
+                      <button class="btn btn-outline-light textbanner-button">Ver productos para Peces</button>
                     </div>
                   </div>
                 </div>
