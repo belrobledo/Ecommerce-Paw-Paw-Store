@@ -83,7 +83,7 @@ function main(){
 
 
 
-//-----FUNCIONES--------------------------------------------------------------------------------------------
+//-----CARGAR-LISTA-PRODUCTOS--------------------------------------------------------------------------------
 async function cargarListaProductos() {
   try {
     const response = await fetch(
@@ -96,70 +96,6 @@ async function cargarListaProductos() {
     }
   } catch (error) {
     console.log(error);
-  }
-}
-
-function indexListener(){
-    let auxLista = [];
-
-    let opcion1 = document.getElementById("bannerProductos");
-    opcion1.onclick = function() {
-        breadCrumb("Productos");
-        listarProductos()};
-
-    let opcion2 = document.getElementById("bannerGatos");
-    opcion2.onclick = function() {
-        auxLista = listaProductos.filter((elemento) => elemento.categoria == "Gatos");
-        breadCrumb("Gatos");
-        listarProductos(auxLista);};
-
-    let opcion3 = document.getElementById("bannerPerros");
-    opcion3.onclick = function() {
-        auxLista = listaProductos.filter((elemento) => elemento.categoria == "Perros");
-        breadCrumb("Perros");
-        listarProductos(auxLista);};
-
-    let opcion4 = document.getElementById("bannerPeces");
-    opcion4.onclick = function() {
-        auxLista = listaProductos.filter((elemento) => elemento.categoria == "Peces");
-        breadCrumb("Peces");
-        listarProductos(auxLista);};
-
-    let busqueda = document.getElementById("searchButton");
-    busqueda.onclick = function() {
-        breadCrumb("Búsqueda");
-        buscarProductoPorNombre();};
-}
-
-//----------------------------------------------------------------------------------------------------------
-
-
-
-//-----BUSCAR-PRODUCTO-POR-NOMBRE---------------------------------------------------------------------------
-function buscarProductoPorNombre(){
-  let searchForm = document.getElementById("search");
-  searchForm.addEventListener("submit", obtenerProductoIngresado);
-}
-
-function obtenerProductoIngresado(event){
-  document.getElementById("searchResult") && document.getElementById("searchResult").remove();
-  document.getElementById("containerProductos") && document.getElementById("containerProductos").remove();
-
-  event.preventDefault();
-  let formulario = event.target;
-  let auxLista = [];
-  let nombre = formulario.children[0].value;
-  auxLista = listaProductos.filter((elemento) => elemento.nombre.toLowerCase().includes(nombre.trim().toLowerCase()));
-  //"includes" para que pueda buscar por un fragmento del string y no solo por la palabra completa.
-  if(auxLista.length === 0){
-      let resultado = document.createElement("p");
-      resultado.id = "searchResult";
-      resultado.className = "text-center";
-      resultado.innerText = "No se encontraron productos que coincidan con la búsqueda.";
-      document.body.append(resultado);
-  }
-  else{
-      listarProductos(auxLista);
   }
 }
 //----------------------------------------------------------------------------------------------------------
@@ -292,7 +228,6 @@ function breadCrumb(categoria = "Productos"){
 }
 
 function listarProductos(auxLista = []) {
-
   let containerProductos = document.createElement("div");
   document.body.append(containerProductos);
   containerProductos.id = "containerProductos";
@@ -492,7 +427,42 @@ function clearScreen(){
 
 
 
-//----AGREGAR-BOTONES---------------------------------------------------------------------------------------
+//----EVENTOS-Y-BOTONES--------------------------------------------------------------------------------------
+
+//--Eventos del Index--
+function indexListener(){
+  let auxLista = [];
+
+  let opcion1 = document.getElementById("bannerProductos");
+  opcion1.onclick = function() {
+      breadCrumb("Productos");
+      listarProductos()};
+
+  let opcion2 = document.getElementById("bannerGatos");
+  opcion2.onclick = function() {
+      auxLista = listaProductos.filter((elemento) => elemento.categoria == "Gatos");
+      breadCrumb("Gatos");
+      listarProductos(auxLista);};
+
+  let opcion3 = document.getElementById("bannerPerros");
+  opcion3.onclick = function() {
+      auxLista = listaProductos.filter((elemento) => elemento.categoria == "Perros");
+      breadCrumb("Perros");
+      listarProductos(auxLista);};
+
+  let opcion4 = document.getElementById("bannerPeces");
+  opcion4.onclick = function() {
+      auxLista = listaProductos.filter((elemento) => elemento.categoria == "Peces");
+      breadCrumb("Peces");
+      listarProductos(auxLista);};
+
+  let busqueda = document.getElementById("searchButton");
+  busqueda.onclick = function() {
+      breadCrumb("Búsqueda");
+      buscarProductoPorNombre();};
+}
+
+//--Boton Comprar Producto--
 function addButtonComprar(producto) {
   let botonComprar = document.createElement("button");
   botonComprar.id = `botonProducto-${producto.id}`;
@@ -520,6 +490,7 @@ function addButtonComprar(producto) {
   return botonComprar;
 }
 
+//--Boton Eliminar Producto en Carrito--
 function addButtonEliminarProducto(producto){
   let botonEliminarProducto = document.createElement("button");
   botonEliminarProducto.id = `botonEliminarProducto-${producto.id}`;
@@ -545,6 +516,7 @@ function eliminarProductoCarrito(idProducto){
   mostrarCarrito();
 }
 
+//--Boton Vaciar Carrito--
 function addButtonVaciarCarrito(){
   let botonVaciarCarrito = document.createElement("button");
   botonVaciarCarrito.id = `botonVaciarCarrito`;
@@ -575,6 +547,7 @@ function addButtonVaciarCarrito(){
   return botonVaciarCarrito;
 }
 
+//--Boton Finalizar Compra (ir al Checkout)--
 function addButtonCheckout(){
   let botonCheckout = document.createElement("button");
   botonCheckout.id = `botonCheckout`;
@@ -590,15 +563,47 @@ function addButtonCheckout(){
   return botonCheckout;
 }
 
+//--Event onSubmit del FormCheckout--
 function listenerFormCheckout(){
   let formCheckout = document.getElementById("formCheckout");
   console.log(formCheckout);
-  formCheckout.addEventListener("submit", prueba);
+  formCheckout.addEventListener("submit", FormCheckoutOnSubmit);
 }
 
-function prueba(event){
+function FormCheckoutOnSubmit(event){
   event.preventDefault();
   let form = event.target;
   mostrarTicket(form)
+}
+//----------------------------------------------------------------------------------------------------------
+
+
+
+//-----BUSCAR-PRODUCTO-POR-NOMBRE---------------------------------------------------------------------------
+function buscarProductoPorNombre(){
+  let searchForm = document.getElementById("search");
+  searchForm.addEventListener("submit", obtenerProductoIngresado);
+}
+
+function obtenerProductoIngresado(event){
+  document.getElementById("searchResult") && document.getElementById("searchResult").remove();
+  document.getElementById("containerProductos") && document.getElementById("containerProductos").remove();
+
+  event.preventDefault();
+  let formulario = event.target;
+  let auxLista = [];
+  let nombre = formulario.children[0].value;
+  auxLista = listaProductos.filter((elemento) => elemento.nombre.toLowerCase().includes(nombre.trim().toLowerCase()));
+  //"includes" para que pueda buscar por un fragmento del string y no solo por la palabra completa.
+  if(auxLista.length === 0){
+      let resultado = document.createElement("p");
+      resultado.id = "searchResult";
+      resultado.className = "text-center";
+      resultado.innerText = "No se encontraron productos que coincidan con la búsqueda.";
+      document.body.append(resultado);
+  }
+  else{
+      listarProductos(auxLista);
+  }
 }
 //----------------------------------------------------------------------------------------------------------
