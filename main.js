@@ -366,7 +366,7 @@ function mostrarCheckout(){
 
       <div class="col-md-7">
         <h4 class="mb-3">Datos del Envío</h4>
-        <form>
+        <form id="formCheckout">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="nombre" class="form-label">Nombre</label>
@@ -378,7 +378,7 @@ function mostrarCheckout(){
             </div>
             <div class="col-12">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+              <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" required>
             </div>
             <div class="col-9">
               <label for="direccion" class="form-label">Dirección</label>
@@ -449,17 +449,17 @@ function mostrarCheckout(){
                               <strong>$${carrito.calcularPrecioTotal().toLocaleString()}</strong>
                             </li>
                             `;
-  listenerBotonPagar();
+  listenerFormCheckout();
 }
 
-function mostrarTicket(){
+function mostrarTicket(form){
   breadCrumb("Ticket");
 
   let containerTicket = document.createElement("div");
   containerTicket.id = "containerTicket";
   containerTicket.className = "container col-12";
   document.body.append(containerTicket);
-  containerTicket.innerHTML = `<h3 class="my-4 text-success">Gracias por su compra!</h3><h5 class="my-2">Resumen:</h5>`;
+  containerTicket.innerHTML = `<h3 class="my-4 text-success" id="ticketTitle">Gracias por tu compra, ${form.elements["nombre"].value} :)</h3><h5 class="my-2">Resumen:</h5>`;
   for(const producto of carrito.productos){
     let row = document.createElement("div");
     row.id = `card-ticket-${producto.id}`;
@@ -590,10 +590,15 @@ function addButtonCheckout(){
   return botonCheckout;
 }
 
-function listenerBotonPagar(){
-  let botonPagar = document.getElementById("botonPagar");
-  botonPagar.onclick = function () {
-    mostrarTicket();
-  }
+function listenerFormCheckout(){
+  let formCheckout = document.getElementById("formCheckout");
+  console.log(formCheckout);
+  formCheckout.addEventListener("submit", prueba);
+}
+
+function prueba(event){
+  event.preventDefault();
+  let form = event.target;
+  mostrarTicket(form)
 }
 //----------------------------------------------------------------------------------------------------------
