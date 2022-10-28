@@ -1,4 +1,4 @@
-//ENTREGA FINAL - ROBLEDO, BELEN
+//PROYECTO FINAL "Paw Paw Store" - ROBLEDO, BELEN
 
 //----CLASES----------------------------------------------------------------------------------------------
 class Producto{
