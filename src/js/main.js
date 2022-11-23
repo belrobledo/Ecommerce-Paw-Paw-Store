@@ -344,7 +344,7 @@ function mostrarCheckout(){
               <small class="text-muted">Nombre como figura en la tarjeta</small>
             </div>
             <div class="col-md-6">
-              <label for="cc-numero" class="form-label">Credit card number</label>
+              <label for="cc-numero" class="form-label">Numero de la Tarjeta</label>
               <input type="text" class="form-control" id="cc-numero" placeholder="xxxx-xxxx-xxxx-xxxx" required>
             </div>
             <div class="col-md-3">
