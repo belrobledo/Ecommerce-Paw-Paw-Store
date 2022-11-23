@@ -16,8 +16,9 @@
   "bugs": {
     "url": "https://github.com/belrobledo/JavaScript-Proyecto-Final/issues"
   },
-  "homepage": ".",
+  "homepage": "https://github.com/belrobledo/JavaScript-Proyecto-Final#readme",
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3"
   }
 }
