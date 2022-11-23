@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/belrobledo/JavaScript-Proyecto-Final/issues"
   },
-  "homepage": "https://github.com/belrobledo/JavaScript-Proyecto-Final#readme",
+  "homepage": ".",
   "dependencies": {
     "bootstrap": "^5.2.3"
   }
