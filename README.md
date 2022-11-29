@@ -1,6 +1,7 @@
 # JavaScript-Proyecto-Final
 
-Aplicacion web - Ecommerce: Tienda de Mascotas.
+Aplicación web - Ecommerce: Tienda de Mascotas.
+
 JavaScript / HTML / CSS / Bootstrap.
 
 Preview -> https://belenrobledo.netlify.app/
