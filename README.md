@@ -1,4 +1,4 @@
-# JavaScript-Proyecto-Final
+# Ecommerce - Paw Paw Store
 
 Aplicación web - Ecommerce: Tienda de Mascotas.
 
